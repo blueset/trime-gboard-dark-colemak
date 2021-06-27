@@ -1,0 +1,429 @@
+colors:
+  1: &bg "#363B41"
+  2: &fg "#ffffff"
+  3: &fgSecondary "#AFB1B3"
+  4: &space "#565A5E"
+  5: &bgPrimary "#5E97F6"
+  5: &bgPrimaryHilit "#4285F4"
+  6: &bgDark "#292E33"
+  7: &divider "#3E4247"
+  8: &spaceHilit "#717578"
+  9: &featureHilt "#494D52"
+
+metrics:
+  1: &keyWidth 10
+  2: &keyHeight 72
+  3: &numberNarrow 14
+  4: &numberWide 24
+  5: &numberHalfWide 12
+
+config_version: "3.0"
+name: Gboard Colemak Arime
+author: Eana Hufwe <https://1a23.com>
+style:
+  __include: trime.yaml:style
+  horizontal_gap: 4
+  vertical_gap: 8
+  key_text_size: 26
+  symbol_text_size: 15
+  key_font: &ProductMDL2 "SegoeMDL2AssetsAndGoogleProductSans-Regular.ttf"
+  symbol_font: *ProductMDL2
+  preview_font: *ProductMDL2
+  keyboards:
+  - default
+  - colemak_en
+  - symbols
+  - symbols_en
+  - symbols_alt_zh
+  - symbols_alt_en
+
+fallback_colors:
+  __include: trime.yaml:fallback_colors
+
+android_keys:
+  __include: trime.yaml:android_keys
+
+preset_color_schemes:
+  default:
+    name: Gboard Dark Default
+    author: Eana Hufwe
+    back_color: *bg
+    text_color: *fg
+    key_text_color: *fg
+    space_back_color: *space
+    space_hilit_color: *spaceHilit
+    key_symbol_color: *fgSecondary
+    preview_back_color: *bgDark
+    preview_text_color: *fg
+    text_back_color: *bgDark
+    hilited_candidate_text_color: *fg
+    candidate_text_color: *fgSecondary
+    hilited_comment_text_color: *fgSecondary
+    enter_back_color: *bgPrimary
+    enter_text_color: *fg
+    enter_hilit_color: *bgPrimaryHilit
+    hilited_key_back_color: *featureHilt
+    preview_back_color: *bgDark
+    preview_text_color: *fg
+    off_key_text_color: *fgSecondary
+
+preset_keys: 
+  __include: trime.yaml:preset_keys
+  __patch:
+    # Modes 
+    "IME_switch/label": "\uE774" # "🌐︎"
+    "Menu/label": "\uE713" # "⚙︎"
+    "Keyboard_symbols/label": "?123"
+    "BackSpace/label": "\uE750" # "⌫"
+    "Return/label": "\uE751" # "↵"
+    "Shift_L/label": "\uE752" # "⇧"
+    "Keyboard_default/label": "ABC"
+    "Keyboard_number/label": "\uF1CD" # "🔢"
+    "Mode_switch/states": ["中", "A"]
+  # Ascii symbols
+  Semicolon: { label: ";", commit: ";", ascii: ";", functional: false }
+  Underscore: { label: "_", commit: "_", ascii: "_", functional: false }
+  Dollar: { label: "$", commit: "$", ascii: "$", functional: false }
+  Backslash: { label: "\\", commit: "\\", ascii: "\\", functional: false }
+  OpenSquareBracket: { label: "[", commit: "[", ascii: "[", functional: false }
+  CloseSquareBracket: { label: "]", commit: "]", ascii: "]", functional: false }
+  # Keyboard toggles
+  Keyboard_en: {label: "中", send: Eisu_toggle, select: "colemak_en"}
+  Keyboard_zh: {label: "A", send: Eisu_toggle, select: default}
+  Keyboard_symbols_en: {label: "?123", send: Eisu_toggle, select: symbols_en}
+  Keyboard_symbols: {label: "?123", send: Eisu_toggle, select: symbols}
+  Keyboard_symbols_alt_en: {label: "=\\A", send: Eisu_toggle, select: "symbols_alt_en"}
+  Keyboard_symbols_alt_zh: {label: "=\\A", send: Eisu_toggle, select: "symbols_alt_zh"}
+
+preset_keyboards:
+  __include: trime.yaml:preset_keyboards
+  # Keyborads
+  default:
+    name: Gboard Colemak zh
+    author: Eana Hufwe <https://1a23.com>
+    ascii_mode: 0
+    ascii_keyboard: colemak_en
+    lock: true
+    width: *keyWidth
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    keys:
+    # Row 1
+    - {click: 'q', long_click: '1', swipe_up: 1}
+    - {click: 'w', long_click: '2', swipe_up: 2}
+    - {click: 'f', long_click: '3', swipe_up: 3}
+    - {click: 'p', long_click: '4', swipe_up: 4}
+    - {click: 'g', long_click: '5', swipe_up: 5}
+    - {click: 'j', long_click: '6', swipe_up: 6}
+    - {click: 'l', long_click: '7', swipe_up: 7}
+    - {click: 'u', long_click: '8', swipe_up: 8, popup: "üǖǘ8ǚǜ"}
+    - {click: 'y', long_click: '9', swipe_up: 9}
+    - {click: ';', long_click: '0', swipe_up: 0}
+    # Row 2
+    - {click: 'a', long_click: '@', swipe_up: '@', popup: "@āáǎà"}
+    - {click: 'r', long_click: '#', swipe_up: '#'}
+    - {click: 's', long_click: '￥', swipe_up: '￥'}
+    - {click: 't', long_click: 'Underscore', swipe_up: 'Underscore'}
+    - {click: 'd', long_click: '&', swipe_up: '&'}
+    - {click: 'h', long_click: '-', swipe_up: '-'}
+    - {click: 'n', long_click: '+', swipe_up: '+'}
+    - {click: 'e', long_click: '(', swipe_up: '(', popup: "ēéě(èê"}
+    - {click: 'i', long_click: ')', swipe_up: ')', popup: "īíǐ)ì"}
+    - {click: 'o', long_click: '/', swipe_up: '/', popup: "ōóǒò/"}
+    # Row 3
+    - {click: Shift_L, has_menu: "'", width: 15}
+    - {click: 'z', long_click: '*', swipe_up: '*'}
+    - {click: 'x', long_click: '"', swipe_up: '"'}
+    - {click: 'c', long_click: "'", swipe_up: "'"}
+    - {click: 'v', long_click: ':', swipe_up: ':', popup: "üǖǘ:ǚǜ"}
+    - {click: 'b', long_click: 'Semicolon', swipe_up: 'Semicolon'}
+    - {click: 'k', long_click: '!', swipe_up: '!'}
+    - {click: 'm', long_click: '?', swipe_up: '?'}
+    - {click: BackSpace, width: 15, preview: " "}
+    # Row 4
+    - {click: Keyboard_symbols, width: 15, key_text_size: 21}
+    - {click: ',', long_click: Menu}
+    # - {click: Mode_switch, long_click: IME_switch}
+    - {click: Keyboard_en, long_click: IME_switch}
+    - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, select_all, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
+    - {click: '.', label: '｡', long_click: '>', popup: "%_；：、！…？$^&"}
+    - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+  colemak_en:
+    name: Gboard Colemak en
+    author: Eana Hufwe <https://1a23.com>
+    ascii_mode: 1
+    lock: true
+    width: *keyWidth
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    keys:
+    # Row 1
+    - {click: 'q', long_click: '1', swipe_up: 1}
+    - {click: 'w', long_click: '2', swipe_up: 2}
+    - {click: 'f', long_click: '3', swipe_up: 3}
+    - {click: 'p', long_click: '4', swipe_up: 4}
+    - {click: 'g', long_click: '5', swipe_up: 5}
+    - {click: 'j', long_click: '6', swipe_up: 6}
+    - {click: 'l', long_click: '7', swipe_up: 7}
+    - {click: 'u', long_click: '8', swipe_up: 8, popup: "ûüù8úū"}
+    - {click: 'y', long_click: '9', swipe_up: 9}
+    - {click: ';', long_click: '0', swipe_up: 0, popup: ":0"}
+    # Row 2
+    - {click: 'a', long_click: '@', swipe_up: '@', popup: "@àáâäãåā"}
+    - {click: 'r', long_click: '#', swipe_up: '#'}
+    - {click: 's', long_click: '$', swipe_up: '$', popup: "$ß"}
+    - {click: 't', long_click: '_', swipe_up: '_'}
+    - {click: 'd', long_click: '&', swipe_up: '&'}
+    - {click: 'h', long_click: '-', swipe_up: '-'}
+    - {click: 'n', long_click: '+', swipe_up: '+', popup: "+ñ"}
+    - {click: 'e', long_click: '(', swipe_up: '(', popup: "èéē(êë"}
+    - {click: 'i', long_click: ')', swipe_up: ')', popup: "îíìï)ī"}
+    - {click: 'o', long_click: '/', swipe_up: '/', popup: "óôöòœøōõ/"}
+    # Row 3
+    - {click: Shift_L, has_menu: "'", width: 15}
+    - {click: 'z', long_click: '*', swipe_up: '*'}
+    - {click: 'x', long_click: '"', swipe_up: '"'}
+    - {click: 'c', long_click: "'", swipe_up: "'", popup: "'ç"}
+    - {click: 'v', long_click: ':', swipe_up: ':'}
+    - {click: 'b', long_click: 'Semicolon', swipe_up: 'Semicolon'}
+    - {click: 'k', long_click: '!', swipe_up: '!'}
+    - {click: 'm', long_click: '?', swipe_up: '?'}
+    - {click: BackSpace, width: 15, preview: " "}
+    # Row 4
+    - {click: Keyboard_symbols_en, width: 15, key_text_size: 21}
+    # - {click: Keyboard_zh, width: 15, key_text_size: 21}
+    - {click: ',', long_click: Menu}
+    # - {click: Mode_switch, long_click: IME_switch}
+    - {click: Keyboard_zh, long_click: IME_switch}
+    - {click: space, width: 40, labemlround_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, select_all, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
+    - {click: '.', label: '｡', long_click: '>', popup: "&%+\"-:'@;/()#!,?"}
+    - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+  symbols:
+    name: Gboard Symbols zh
+    author: Eana Hufwe
+    ascii_mode: 0
+    ascii_keyboard: symbols_en
+    width: *keyWidth
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    keys:
+    # Row 1
+    - {click: '1', popup: "¹½⅓¼⅕⅙⅐⅛⅑⅒"}
+    - {click: '2', popup: "²⅔⅖"}
+    - {click: '3', popup: "³¾⅗⅜"}
+    - {click: '4', popup: "⁴⅘"}
+    - {click: '5', popup: "⁵⅚⅝"}
+    - {click: '6', popup: "⁶"}
+    - {click: '7', popup: "⁷"}
+    - {click: '8', popup: "⁸"}
+    - {click: '9', popup: "⁹"}
+    - {click: '0', popup: "⁰ⁿ∅"}
+    # Row 2
+    - {click: '@'}
+    - {click: '#', long_click: '№'}
+    - {click: '￥', long_click: '$', popup: "$¢€₱£"}
+    - {click: 'Underscore', long_click: "——", key_symbol_offset_x: 4}
+    - {click: '&'}
+    - {click: '-', long_click: '–', popup: "_–—·"}
+    - {click: '+', long_click: '±'}
+    - {click: '(', long_click: '【', popup: "【{(<［"}
+    - {click: ')', long_click: '】', popup: "】］})>"}
+    - {click: '/', long_click: '／'}
+    # Row 2
+    - {click: Keyboard_symbols_alt_zh, width: 15, key_text_size: 21}
+    - {click: '、'}
+    - {click: '“', long_click: '《'}
+    - {click: '”', long_click: '》'}
+    - {click: '：', long_click: ':'}
+    - {click: '；', long_click: 'Semicolon'}
+    - {click: '！'}
+    - {click: '？'}
+    - {click: BackSpace, width: 15, preview: " "}
+    # Row 3
+    - {click: Keyboard_default, width: 15, key_text_size: 21}
+    - {click: ',', long_click: Menu}
+    - {click: Keyboard_number}
+    - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
+    - {click: '。', ascii: '.', long_click: "…"}
+    - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+  symbols_en:
+    name: Gboard Symbols en
+    author: Eana Hufwe
+    ascii_mode: 1
+    width: *keyWidth
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    keys:
+    # Row 1
+    - {click: '1', popup: "¹½⅓¼⅕⅙⅐⅛⅑⅒"}
+    - {click: '2', popup: "²⅔⅖"}
+    - {click: '3', popup: "³¾⅗⅜"}
+    - {click: '4', popup: "⁴⅘"}
+    - {click: '5', popup: "⁵⅚⅝"}
+    - {click: '6', popup: "⁶"}
+    - {click: '7', popup: "⁷"}
+    - {click: '8', popup: "⁸"}
+    - {click: '9', popup: "⁹"}
+    - {click: '0', popup: "⁰ⁿ∅"}
+    # Row 2
+    - {click: '@'}
+    - {click: '#', long_click: '№'}
+    - {click: '$', long_click: '¢', popup: "¢€₱£¥"}
+    - {click: '_', long_click: '—'}
+    - {click: '&'}
+    - {click: '-', long_click: '–', popup: "_–—·"}
+    - {click: '+', long_click: '±'}
+    - {click: '(', long_click: '[', popup: "<[{"}
+    - {click: ')', long_click: ']', popup: ">]}"}
+    - {click: '/'}
+    # Row 2
+    - {click: Keyboard_symbols_alt_en, width: 15, key_text_size: 21}
+    - {click: '*', long_click: '†', popup: "†‡★"}
+    - {click: '"', long_click: '“”{Left}', popup: "„“”«»"}
+    - {click: "'", long_click: '‘’{Left}', popup: "‚‘’‹›"}
+    - {click: ':'}
+    - {click: ';'}
+    - {click: '!', long_click: '¡'}
+    - {click: '?', long_click: '¿', popup: "¿‽"}
+    - {click: BackSpace, width: 15, preview: " "}
+    # Row 3
+    - {click: Keyboard_default, width: 15, key_text_size: 21}
+    - {click: ',', long_click: Menu}
+    - {click: Keyboard_number}
+    - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, select_all, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
+    - {click: '。', ascii: '.', long_click: "…"}
+    - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+  symbols_alt_zh:
+    name: Gboard Symbols Alt zh
+    author: Eana Hufwe
+    ascii_mode: 0
+    ascii_keyboard: symbols_en
+    width: *keyWidth
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    keys:
+    # Row 1
+    - {click: '~', long_click: '～'}
+    - {click: '`'}
+    - {click: '|'}
+    - {click: '·', long_click: '♪', popup: "♪♣️♠️♥️♦️"}
+    - {click: '√'}
+    - {click: 'π', long_click: "μ", popup: "ΠμΩ"}
+    - {click: '÷'}
+    - {click: '×'}
+    - {click: '*', long_click: '†', popup: "★†‡"}
+    - {click: '¶', long_click: '§'}
+    # Row 2
+    - {click: '£'}
+    - {click: '¢'}
+    - {click: '€'}
+    - {click: '¥'}
+    - {click: '^', long_click: '✥', swipe_left: ←, swipe_right: →, swipe_up: ↑, swipe_down: ↓, popup: "←↑↓→"}
+    - {click: '°', long_click: '′″{Left}', popup: "′″"}
+    - {click: '=', long_click: '≠', popup: "∞≠≈"}
+    - {click: '「', long_click: '『'}
+    - {click: '」', long_click: '』'}
+    - {click: 'Backslash'}
+    # Row 3
+    - {click: Keyboard_symbols, width: 15, key_text_size: 21}
+    - {click: '%', long_click: "‰", popup: "‰℅"}
+    - {click: '‘', long_click: '«', popup: "'〈"}
+    - {click: '’', long_click: '»', popup: "‚〉"}
+    - {click: '™'}
+    - {click: '✓', long_click: '✗'}
+    - {click: 'OpenSquareBracket', long_click: '［'}
+    - {click: 'CloseSquareBracket', long_click: '］'}
+    - {click: BackSpace, width: 15, preview: " "}
+    # Row 4
+    - {click: Keyboard_default, width: 15, key_text_size: 21}
+    - {click: '《', long_click: '〈', popup: "«≤‹⟨"}
+    - {click: Keyboard_number}
+    - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
+    - {click: '》', long_click: "〉", popup: "⟩»≥›"}
+    - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+  symbols_alt_en:
+    name: Gboard Symbols Alt en
+    author: Eana Hufwe
+    ascii_mode: 1
+    width: *keyWidth
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    keys:
+    # Row 1
+    - {click: '~'}
+    - {click: '`'}
+    - {click: '|'}
+    - {click: '·', long_click: '♪', popup: "♪♣️♠️♥️♦️"}
+    - {click: '√'}
+    - {click: 'π', long_click: "μ", popup: "ΠμΩ"}
+    - {click: '÷'}
+    - {click: '×'}
+    - {click: 'Δ', long_click: '§'}
+    # Row 2
+    - {click: '£'}
+    - {click: '#'}
+    - {click: '¢'}
+    - {click: '€'}
+    - {click: '¥'}
+    - {click: '^', long_click: '✥', swipe_left: ←, swipe_right: →, swipe_up: ↑, swipe_down: ↓, popup: "←↑↓→"}
+    - {click: '°', long_click: '′″{Left}', popup: "′″"}
+    - {click: '=', long_click: '≠', popup: "∞≠≈"}
+    - {click: '{', long_click: '('}
+    - {click: '}', long_click: ')'}
+    - {click: 'Backslash'}
+    # Row 3
+    - {click: Keyboard_symbols_en, width: 15, key_text_size: 21}
+    - {click: '%', long_click: "‰", popup: "‰℅"}
+    - {click: '©'}
+    - {click: '®'}
+    - {click: '™'}
+    - {click: '✓', long_click: '✗'}
+    - {click: '[', popup: "{("}
+    - {click: ']', popup: "})"}
+    - {click: BackSpace, width: 15, preview: " "}
+    # Row 4
+    - {click: Keyboard_default, width: 15, key_text_size: 21}
+    - {click: '<', long_click: '«', popup: "«≤‹⟨"}
+    - {click: Keyboard_number}
+    - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
+    - {click: '>', long_click: "»", popup: "⟩»≥›"}
+    - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+  number:
+    name: Gboard 10 keys
+    author: "osfans <waxaca@163.com>"
+    width: *numberWide
+    height: *keyHeight
+    key_symbol_offset_x: 5
+    # |- 14 -|-- 24 --|-- 24 --|-- 24 --|- 14 -|
+    #    +       1        2        3        %
+    #    -       4        5        6        spc
+    #    *       7        8        9       bksp
+    #    /     ,  ABC     0      =    .    entr
+    keys:
+    # Row 1
+    - {click: '+', width: *numberNarrow, long_click: "("}
+    - {click: '1'}
+    - {click: '2'}
+    - {click: '3'}
+    - {click: '%', width: *numberNarrow}
+    # Row 2
+    - {click: '-', width: *numberNarrow, long_click: ")"}
+    - {click: '4'}
+    - {click: '5'}
+    - {click: '6'}
+    - {click: space, width: *numberNarrow}
+    # Row 3
+    - {click: '*', width: *numberNarrow}
+    - {click: '7'}
+    - {click: '8'}
+    - {click: '9'}
+    - {click: BackSpace, width: *numberNarrow}
+    # Row 4
+    - {click: '/', width: *numberNarrow}
+    - {click: ',', width: *numberHalfWide}
+    - {click: Keyboard_default, long_click: Keyboard_symbols, width: *numberHalfWide}
+    - {click: '0'}
+    - {click: '=', width: *numberHalfWide}
+    - {click: '.', width: *numberHalfWide}
+    - {click: Return, width: *numberNarrow, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
+# END
