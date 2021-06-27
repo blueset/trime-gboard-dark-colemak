@@ -21,9 +21,9 @@ A Gboard Dark theme for Trime with Colemak layout.
 
 ## 使用方法
 * 备份 Rime 文件夹内的内容。
-* 将 `trime.custom.yaml` 文件和 `fonts` 文件夹下载到 Rime 目录下。
-* 若正在使用其他输入方案，请将 `trime.custom.yaml` 内所有的 `xkjd27c` 字样替换为正在使用的方案 ID。
+* 将 `gBoardColemak.yaml.yaml` 文件和 `fonts` 文件夹下载到 Rime 目录下。
 * 部署同文输入法。
+* 在同文输入法的「主题」选单中选择 Gboard Colemak。
 
 ## 授权
 * `trime.custom.yaml` by Eana Hufwe released under MIT License

@@ -17,24 +17,36 @@ metrics:
   4: &numberWide 24
   5: &numberHalfWide 12
 
-patch:
-  "style/horizontal_gap": 4
-  "style/vertical_gap": 8
-  "style/key_text_size": 26
-  "style/symbol_text_size": 15
-  "style/key_font": &ProductMDL2 "SegoeMDL2AssetsAndGoogleProductSans-Regular.ttf"
-  "style/symbol_font": *ProductMDL2
-  "style/preview_font": *ProductMDL2
-  "style/keyboards/+":
-  - xkjd27c
+config_version: "3.0"
+name: Gboard Colemak
+author: Eana Hufwe <https://1a23.com>
+style:
+  __include: trime.yaml:style
+  horizontal_gap: 4
+  vertical_gap: 8
+  key_text_size: 26
+  symbol_text_size: 15
+  key_font: &ProductMDL2 "SegoeMDL2AssetsAndGoogleProductSans-Regular.ttf"
+  symbol_font: *ProductMDL2
+  preview_font: *ProductMDL2
+  keyboards:
+  - default
   - colemak_en
   - symbols
   - symbols_en
   - symbols_alt_zh
   - symbols_alt_en
-  "preset_color_schemes/gBoardDark":
+
+fallback_colors:
+  __include: trime.yaml:fallback_colors
+
+android_keys:
+  __include: trime.yaml:android_keys
+
+preset_color_schemes:
+  gBoardDark:
     name: Gboard Dark Default
-    author: Eana Hufwe <https://1a23.com>
+    author: Eana Hufwe
     back_color: *bg
     text_color: *fg
     key_text_color: *fg
@@ -54,32 +66,38 @@ patch:
     preview_back_color: *bgDark
     preview_text_color: *fg
     off_key_text_color: *fgSecondary
-  # Modes
-  "preset_keys/IME_switch/label": "\uE774" # "🌐︎"
-  "preset_keys/Menu/label": "\uE713" # "⚙︎"
-  "preset_keys/Keyboard_symbols/label": "?123"
-  "preset_keys/BackSpace/label": "\uE750" # "⌫"
-  "preset_keys/Return/label": "\uE751" # "↵"
-  "preset_keys/Shift_L/label": "\uE752" # "⇧"
-  "preset_keys/Keyboard_default/label": "ABC"
-  "preset_keys/Keyboard_number/label": "\uF1CD" # "🔢"
-  "preset_keys/Mode_switch/states": ["中", "A"]
+
+preset_keys: 
+  __include: trime.yaml:preset_keys
+  __patch:
+    # Modes 
+    "IME_switch/label": "\uE774" # "🌐︎"
+    "Menu/label": "\uE713" # "⚙︎"
+    "Keyboard_symbols/label": "?123"
+    "BackSpace/label": "\uE750" # "⌫"
+    "Return/label": "\uE751" # "↵"
+    "Shift_L/label": "\uE752" # "⇧"
+    "Keyboard_default/label": "ABC"
+    "Keyboard_number/label": "\uF1CD" # "🔢"
+    "Mode_switch/states": ["中", "A"]
   # Ascii symbols
-  "preset_keys/Semicolon": { label: ";", commit: ";", ascii: ";", functional: false }
-  "preset_keys/Underscore": { label: "_", commit: "_", ascii: "_", functional: false }
-  "preset_keys/Dollar": { label: "$", commit: "$", ascii: "$", functional: false }
-  "preset_keys/Backslash": { label: "\\", commit: "\\", ascii: "\\", functional: false }
-  "preset_keys/OpenSquareBracket": { label: "[", commit: "[", ascii: "[", functional: false }
-  "preset_keys/CloseSquareBracket": { label: "]", commit: "]", ascii: "]", functional: false }
+  Semicolon: { label: ";", commit: ";", ascii: ";", functional: false }
+  Underscore: { label: "_", commit: "_", ascii: "_", functional: false }
+  Dollar: { label: "$", commit: "$", ascii: "$", functional: false }
+  Backslash: { label: "\\", commit: "\\", ascii: "\\", functional: false }
+  OpenSquareBracket: { label: "[", commit: "[", ascii: "[", functional: false }
+  CloseSquareBracket: { label: "]", commit: "]", ascii: "]", functional: false }
   # Keyboard toggles
-  "preset_keys/Keyboard_en": {label: "中", send: Eisu_toggle, select: "colemak_en"}
-  "preset_keys/Keyboard_zh": {label: "A", send: Eisu_toggle, select: xkjd27c}
-  "preset_keys/Keyboard_symbols_en": {label: "?123", send: Eisu_toggle, select: symbols_en}
-  "preset_keys/Keyboard_symbols": {label: "?123", send: Eisu_toggle, select: symbols}
-  "preset_keys/Keyboard_symbols_alt_en": {label: "=\\A", send: Eisu_toggle, select: "symbols_alt_en"}
-  "preset_keys/Keyboard_symbols_alt_zh": {label: "=\\A", send: Eisu_toggle, select: "symbols_alt_zh"}
+  Keyboard_en: {label: "中", send: Eisu_toggle, select: "colemak_en"}
+  Keyboard_zh: {label: "A", send: Eisu_toggle, select: default}
+  Keyboard_symbols_en: {label: "?123", send: Eisu_toggle, select: symbols_en}
+  Keyboard_symbols: {label: "?123", send: Eisu_toggle, select: symbols}
+  Keyboard_symbols_alt_en: {label: "=\\A", send: Eisu_toggle, select: "symbols_alt_en"}
+  Keyboard_symbols_alt_zh: {label: "=\\A", send: Eisu_toggle, select: "symbols_alt_zh"}
+
+preset_keyboards:
   # Keyborads
-  "preset_keyboards/xkjd27c":
+  default:
     name: Gboard Colemak zh
     author: Eana Hufwe <https://1a23.com>
     ascii_mode: 0
@@ -129,9 +147,9 @@ patch:
     - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, select_all, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
     - {click: '.', label: '｡', long_click: '>'}
     - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
-  "preset_keyboards/colemak_en":
+  colemak_en:
     name: Gboard Colemak en
-    author: Eana Hufwe <https://1a23.com> <https://1a23.com>
+    author: Eana Hufwe <https://1a23.com>
     ascii_mode: 1
     lock: true
     width: *keyWidth
@@ -179,9 +197,9 @@ patch:
     - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, select_all, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
     - {click: '.', label: '｡', long_click: '>'}
     - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
-  "preset_keyboards/symbols":
+  symbols:
     name: Gboard Symbols zh
-    author: Eana Hufwe <https://1a23.com>
+    author: Eana Hufwe
     ascii_mode: 0
     ascii_keyboard: symbols_en
     width: *keyWidth
@@ -227,9 +245,9 @@ patch:
     - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
     - {click: '。', ascii: '.', long_click: "…"}
     - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
-  "preset_keyboards/symbols_en":
+  symbols_en:
     name: Gboard Symbols en
-    author: Eana Hufwe <https://1a23.com>
+    author: Eana Hufwe
     ascii_mode: 1
     width: *keyWidth
     height: *keyHeight
@@ -274,9 +292,9 @@ patch:
     - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, select_all, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
     - {click: '。', ascii: '.', long_click: "…"}
     - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
-  "preset_keyboards/symbols_alt_zh":
+  symbols_alt_zh:
     name: Gboard Symbols Alt zh
-    author: Eana Hufwe <https://1a23.com>
+    author: Eana Hufwe
     ascii_mode: 0
     ascii_keyboard: symbols_en
     width: *keyWidth
@@ -322,9 +340,9 @@ patch:
     - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
     - {click: '》', long_click: "〉"}
     - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
-  "preset_keyboards/symbols_alt_en":
+  symbols_alt_en:
     name: Gboard Symbols Alt en
-    author: Eana Hufwe <https://1a23.com>
+    author: Eana Hufwe
     ascii_mode: 1
     width: *keyWidth
     height: *keyHeight
@@ -369,7 +387,7 @@ patch:
     - {click: space, width: 40, round_corner: 15, key_back_color: space_back_color, hilited_key_back_color: space_hilit_color, swipe_left: Left, swipe_right: Right, swipe_up: Up, swipe_down: Down}
     - {click: '>', long_click: "»"}
     - {click: Return, width: 15, round_corner: 30, key_back_color: enter_back_color, hilited_key_back_color: enter_hilit_color, key_text_color: enter_text_color}
-  "preset_keyboards/number":
+  number:
     name: Gboard 10 keys
     author: "osfans <waxaca@163.com>"
     width: *numberWide
